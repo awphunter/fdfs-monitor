@@ -4,7 +4,7 @@
 <head>
     <base href="${basePath }" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>fastdfs-zyc 分布式监控管理系统</title>
+    <title>汽车之家fastdfs监控管理系统</title>
     <link href="css/themes/default/style.css" rel="stylesheet" type="text/css" media="screen"/>
     <link href="css/themes/css/core.css" rel="stylesheet" type="text/css" media="screen"/>
     <link href="css/themes/css/print.css" rel="stylesheet" type="text/css" media="print"/>
@@ -308,7 +308,7 @@
             <div class="navTab-panel tabsPageContent layoutBox">
                 <div class="page unitBox">
                     <div class="accountInfo">
-                        <p><span>欢迎使用fastdfs-zyc监控平台</span></p>
+                        <p><span>欢迎使用汽车之家fastdfs监控平台&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如需帮助，联系互动优化组</span></p>
 
                     </div>
                     <div id="containterYdm11" style="margin-left: 300px;margin-top:100px;width: 400px;height: 600px;"></div>
