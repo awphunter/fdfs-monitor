@@ -29,7 +29,7 @@ public class Tools {
     public static List<String> exeRemoteConsole(String hostname, String username, String password, String cmd) {
         List<String> result = new ArrayList<String>();
         //指明连接主机的IP地址
-        Connection conn = new Connection(hostname);
+        Connection conn = new Connection(hostname,30000);
         Session ssh = null;
         try {
             //连接到主机
