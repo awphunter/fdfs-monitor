@@ -186,8 +186,8 @@ public class MonitorServiceImpl extends BaseService implements MonitorService {
         List storages = query.setParameter("ip", ip)
                 .setParameter("starttime", starttime)
                 .setParameter("endtime", endtime).list();
-        Line uploadLine = new Line("上传流量");
-        Line downLoadLine = new Line("下载流量");
+        Line uploadLine = new Line("up");
+        Line downLoadLine = new Line("download");
         lines.add(uploadLine);
         lines.add(downLoadLine);
         for (int i = 0; i < storages.size(); i++) {

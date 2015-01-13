@@ -367,44 +367,6 @@ public class JobServiceImpl extends BaseService implements JobService {
             }
         }
     }
-
-    /**
-     * 每天定时读取logger日志，并入库
-     */
-    @Override
-    @Scheduled(cron = "0 0 01 * * ?")
-    public void readDataFromLoggerToDataBase()throws  JSchException{
-        SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd");
-        Calendar c = Calendar.getInstance();
-        c.add(Calendar.DAY_OF_MONTH, -1);
-        Date d = c.getTime();
-        String date = df.format(d);
-        for (Machine machine : Tools.machines) {
-            String cmd = "cat "+machine.getLogpath()+"/fastdfs_" + date + ".log";
-            List<String> strList = new ArrayList<String>();
-            if(machine.isConfigType())
-                strList = Tools.exeRemoteConsole(machine.getIp(),
-                        machine.getUsername(), machine.getPassword(), cmd);
-            else
-                strList = new JsshProxy(machine.getIp(),machine.getUsername(),machine.getPort(),machine.getSsh()).execute(cmd).getExecuteLines();
-            for (String str : strList) {
-                String data[] = str.split(" ");
-                if (data[8].equals("200")) {
-                    //去数据库对应的表tbdownloadfilerecord中查询有没有fileId和对应的ip的DownloadFileRecord存在；
-                    DownloadFileRecord downloadFileRecord = fileDataService.getDownloadFileRecordByIpAndFileId(machine.getIp(), data[6]);
-                    if (downloadFileRecord != null) {
-                        downloadFileRecord.setAccessCount(downloadFileRecord.getAccessCount() + 1);
-                    } else {
-                        downloadFileRecord = new DownloadFileRecord();
-                        downloadFileRecord.setFileId(data[6]);
-                        downloadFileRecord.setSrc_ip(machine.getIp());
-                        downloadFileRecord.setAccessCount(1);
-                    }
-                    fileDataService.saveDF(downloadFileRecord);
-                }
-            }
-        }
-    }
 }
 
 
