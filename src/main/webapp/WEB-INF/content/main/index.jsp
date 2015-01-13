@@ -28,7 +28,7 @@
             },
             credits:{
                 href:'javascript:void(0)',
-                text: "Chen.H"
+                text: "autohome"
             }
         });
         $(function(){

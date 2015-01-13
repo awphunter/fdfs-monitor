@@ -78,7 +78,7 @@ function drawCapactityStorage(obj,title,data){
         series:data,
         credits:{
                 href:'javascript:void(0)',
-                text:'vivame.cn'
+                text:'autohome'
             }
     });
 }

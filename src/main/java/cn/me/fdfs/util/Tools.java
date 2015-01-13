@@ -33,7 +33,7 @@ public class Tools {
         Session ssh = null;
         try {
             //连接到主机
-            conn.connect();
+            conn.connect(null,3000,3000);
             //使用用户名和密码校验
             boolean isconn = conn.authenticateWithPassword(username, password);
             if (!isconn) {

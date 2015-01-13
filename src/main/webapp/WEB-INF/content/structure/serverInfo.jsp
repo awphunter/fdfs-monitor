@@ -109,7 +109,7 @@ function structureCreateChart(id, totalMB, freeMB, name, ip) {
         ],
         credits:{
             href:'javascript:void(0)',
-            text:'vivame.cn'
+            text:'autohome'
         }
     });
 }
