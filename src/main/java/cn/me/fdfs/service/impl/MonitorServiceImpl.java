@@ -299,7 +299,6 @@ public class MonitorServiceImpl extends BaseService implements MonitorService {
     @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
     public StorageHour getStorageByIp(String ip) throws IOException,
             MyException {
-        System.out.println(ip);
         StorageHour storages = new StorageHour();
         Session session = getSession();
         String str = "from StorageHour as s where s.ipAddr='" + ip

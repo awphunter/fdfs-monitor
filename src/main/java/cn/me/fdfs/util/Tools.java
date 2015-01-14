@@ -37,9 +37,9 @@ public class Tools {
             //使用用户名和密码校验
             boolean isconn = conn.authenticateWithPassword(username, password);
             if (!isconn) {
-                logger.error("用户名称或者是密码不正确");
+                logger.error("username or password error");
             } else {
-                logger.info("已经连接OK");
+//                logger.info("connect OK");
                 ssh = conn.openSession();
                 //使用多个命令用分号隔开
 //              ssh.execCommand("pwd;cd /tmp;mkdir shb;ls;ps -ef|grep weblogic");

@@ -38,13 +38,7 @@ public class MonitorAction implements ServletContextAware {
 	@Autowired
 	private MonitorService monitorService;
 
-	@RequestMapping("/capacity")
-	public ModelAndView capacity() throws IOException, MyException,JSchException {
-		ModelAndView mv = new ModelAndView("monitor/capacity.jsp");
-		mv.addObject("groupInfo", monitorService.listGroupInfo());
 
-		return mv;
-	}
 
 	@ResponseBody
 	@RequestMapping("/listGroupInfo")
@@ -52,18 +46,14 @@ public class MonitorAction implements ServletContextAware {
 		return monitorService.listGroupInfo();
 	}
 
-	@RequestMapping("/netTraffic")
-	public ModelAndView netTraffic() throws IOException, MyException,JSchException {
-		ModelAndView mv = new ModelAndView("monitor/netTraffic.jsp");
-		mv.addObject("groupInfo", monitorService.listGroupInfo());
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-		Calendar calendar = Calendar.getInstance();
-		mv.addObject("end", sdf.format(calendar.getTime()));
-		calendar.add(Calendar.HOUR, -1);
-		mv.addObject("start", sdf.format(calendar.getTime()));
-		return mv;
-	}
 
+    /**
+     * 性能监控---实时获取 节点信息 和 cpu以及内存使用率
+     * @return
+     * @throws IOException
+     * @throws MyException
+     * @throws JSchException
+     */
 	@RequestMapping("/performance")
 	public ModelAndView performance() throws IOException, MyException,JSchException {
 		ModelAndView mv = new ModelAndView("monitor/performance.jsp");
@@ -74,6 +64,13 @@ public class MonitorAction implements ServletContextAware {
 		return mv;
 	}
 
+    /**
+     * 性能监控---根据组名读数据库tbstorage获取CPU和内存使用率的曲线
+     * @param groupName
+     * @return
+     * @throws IOException
+     * @throws MyException
+     */
 	@ResponseBody
 	@RequestMapping("/getPerformanceLine")
 	public List<Line> getPerformanceLine(String groupName) throws IOException,
@@ -81,6 +78,34 @@ public class MonitorAction implements ServletContextAware {
 		return monitorService.listStorageLines(groupName);
 	}
 
+    /**
+     * 流量监控---获取节点信息和时间段
+     * @return
+     * @throws IOException
+     * @throws MyException
+     * @throws JSchException
+     */
+    @RequestMapping("/netTraffic")
+    public ModelAndView netTraffic() throws IOException, MyException,JSchException {
+        ModelAndView mv = new ModelAndView("monitor/netTraffic.jsp");
+        mv.addObject("groupInfo", monitorService.listGroupInfo());
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        Calendar calendar = Calendar.getInstance();
+        mv.addObject("end", sdf.format(calendar.getTime()));
+        calendar.add(Calendar.HOUR, -1);
+        mv.addObject("start", sdf.format(calendar.getTime()));
+        return mv;
+    }
+
+    /**
+     * 流量监控---读取tbstorage或tbstoragehour或tbstorageday获取
+     * @param ip
+     * @param start
+     * @param end
+     * @return
+     * @throws IOException
+     * @throws MyException
+     */
 	@ResponseBody
 	@RequestMapping("/getNetTrafficLine")
 	public List<Line> getNetTrafficLine(String ip, String start, String end)
@@ -88,7 +113,46 @@ public class MonitorAction implements ServletContextAware {
 		return monitorService.getNetTrafficLines(ip, start, end);
 	}
 
-	@ResponseBody
+    /**
+     * 容量监控---获取组信息
+     * @return
+     * @throws IOException
+     * @throws MyException
+     * @throws JSchException
+     */
+    @RequestMapping("/capacity")
+    public ModelAndView capacity() throws IOException, MyException,JSchException {
+        ModelAndView mv = new ModelAndView("monitor/capacity.jsp");
+        mv.addObject("groupInfo", monitorService.listGroupInfo());
+
+        return mv;
+    }
+
+    /**
+     * 容量监控----容量历史---读取tbstoragehour获取最后一小时的数据
+     * @param ip
+     * @return
+     * @throws IOException
+     * @throws MyException
+     */
+    @RequestMapping("/storageInfo")
+    public ModelAndView storageInfo(String ip) throws IOException, MyException {
+        ModelAndView mv = new ModelAndView("monitor/storageInfo.jsp");
+        mv.addObject("storage", monitorService.getStorageByIp(ip));
+        return mv;
+    }
+
+
+    /**
+     * 容量监控----容量历史---查询tbstoragehour获取容量图
+     * @param ip
+     * @param startTime
+     * @param endTime
+     * @return
+     * @throws IOException
+     * @throws MyException
+     */
+    @ResponseBody
 	@RequestMapping("/capactityStorage")
 	public List<Line> capactityStorage(String ip, String startTime,
 			String endTime) throws IOException, MyException {
@@ -98,13 +162,15 @@ public class MonitorAction implements ServletContextAware {
 		return result;
 	}
 
-	@RequestMapping("/storageInfo")
-	public ModelAndView storageInfo(String ip) throws IOException, MyException {
-		ModelAndView mv = new ModelAndView("monitor/storageInfo.jsp");
-		mv.addObject("storage", monitorService.getStorageByIp(ip));
-		return mv;
-	}
-
+    /**
+     * 容量监控----容量历史---查询tbstoragehour获取文件数量图
+     * @param ip
+     * @param startTime
+     * @param endTime
+     * @return
+     * @throws IOException
+     * @throws MyException
+     */
 	@ResponseBody
 	@RequestMapping("/fileCountStorage")
 	public List<Line> fileCountStorage(String ip, String startTime,
