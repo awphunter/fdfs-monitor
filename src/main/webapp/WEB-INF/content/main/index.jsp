@@ -263,8 +263,8 @@
                 <div class="accordionContent">
                     <ul class="tree">
                         <li><a href="structure/netStructure.shtml" target="navTab" rel="netStructure">网络结构图</a></li>
-                        <li><a href="dataStructure/fileData.shtml" target="navTab" rel="fileData">数据结构图</a></li>
-                        <li><a href="testModule/accessFile.shtml" target="navTab" rel="accessFile">访问拓扑图</a></li>
+                        <%--<li><a href="dataStructure/fileData.shtml" target="navTab" rel="fileData">数据结构图</a></li>--%>
+                        <%--<li><a href="testModule/accessFile.shtml" target="navTab" rel="accessFile">访问拓扑图</a></li>--%>
                     </ul>
                 </div>
 

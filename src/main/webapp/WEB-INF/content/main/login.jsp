@@ -14,7 +14,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>fastdfs-zyc 分布式监控管理系统</title>
+    <title>汽车之家fastdfs监控管理系统</title>
     <link href="${basePath }/css/themes/css/login.css" rel="stylesheet" type="text/css" />
 
     <script src="${basePath }/js/speedup.js" type="text/javascript"></script>

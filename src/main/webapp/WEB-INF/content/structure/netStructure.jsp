@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!-- 为图像创建一个容器 -->
+<div class="pageContent sortDrag" selector="h1" layoutH="42">
 <table id="graphContainer">
     <tr>
         <td style="width: 40%;">
@@ -58,8 +59,8 @@
             <div class="panel" defH="200">
                 <h1>TRUCKER</h1>
 
-                <div class="panelContent"><a href=" javascript:;"
-                                             onclick="navTab.openTab('serverInfo','structure/serverInfo.shtml?ip=${trucker}',{title:'服务器详细信息'})">
+                <div class="panelContent">
+                    <%--<a href=" javascript:;" onclick="navTab.openTab('serverInfo','structure/serverInfo.shtml?ip=${trucker}',{title:'服务器详细信息'})">--%>
                     <img src="${basePath}/images/track.png" alt="${trucker}" style="float: left; margin-right:350px"/></a>
                     <span style="font-weight: 800;color: red">${trucker}</span>
                 </div>
@@ -68,3 +69,4 @@
     </tr>
 
 </table>
+</div>
