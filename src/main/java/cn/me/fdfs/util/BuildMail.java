@@ -3,6 +3,9 @@
  */
 package cn.me.fdfs.util;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.activation.DataHandler;
 import javax.activation.FileDataSource;
 import javax.mail.*;
@@ -21,6 +24,9 @@ import java.util.Properties;
  *
  */
 public class BuildMail {
+
+    private static final Logger logger = LoggerFactory
+            .getLogger(BuildMail.class);
 	private MimeMessage mimeMsg; // MIME邮件对象
 
 	private Session session; // 邮件会话对象
@@ -140,7 +146,7 @@ public class BuildMail {
 	public boolean setBody(String mailBody) {
 		try {
 			BodyPart bp = new MimeBodyPart();
-			bp.setContent("<meta http-equiv=Content-Type content=text/html; charset=gb2312>" + mailBody, "text/html;charset=GB2312");
+			bp.setContent("<meta http-equiv=Content-Type content=text/html; charset=utf-8>" + mailBody, "text/html;charset=utf-8");
 			mp.addBodyPart(bp);
 
 			return true;
@@ -185,7 +191,7 @@ public class BuildMail {
 		System.out.println("设置发信人！");
 		try {
 			
-			mimeMsg.setFrom(new InternetAddress(from,view,("GB2312")));// 设置发信人
+			mimeMsg.setFrom(new InternetAddress(from,view,("utf-8")));// 设置发信人
 			return true;
 		} catch (Exception e) {
 			return false;
@@ -260,7 +266,7 @@ public class BuildMail {
 
 			return true;
 		} catch (Exception e) {
-			System.err.println("邮件发送失败！" + e);
+            logger.error("邮件发送失败！" ,e);
 			return false;
 		}
 	}

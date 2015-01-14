@@ -67,7 +67,7 @@ public class WarningAction {
     @RequestMapping("/saveWarning")
     public Message saveWarning(String warningdataid, String ips, String wdFreeMB, String wdCpu, String wdMem) throws IOException, MyException,JSchException {
         Message message = null;
-        String result = "操作成功";
+        String result = "成功";
         message = new Message();
         List<Group> groupList = monitorService.listGroupInfo();
         for (Group group : groupList) {
@@ -123,7 +123,7 @@ public class WarningAction {
         //Message message =new Message("200","删除成功","warningValue","warningValue","","");
         message = new Message();
         message.setStatusCode("200");
-        message.setMessage("操作成功");
+        message.setMessage("success");
         return message;
     }
 
@@ -180,7 +180,7 @@ public class WarningAction {
         //Message message =new Message("200","删除成功","warUserList","warUserList","","");
         message = new Message();
         message.setStatusCode("200");
-        message.setMessage("操作成功");
+        message.setMessage("success");
         return message;
     }
 
@@ -188,7 +188,7 @@ public class WarningAction {
     @RequestMapping("/saveWarUser")
     public Message saveWarUser(String wuid, String wuname, String wuphone, String wuemail) throws IOException, MyException {
         Message message = null;
-        String result = "操作成功";
+        String result = "success";
         WarningUser wu = new WarningUser();
         if (wuphone.length() > 11) {
              result="操作失败";
@@ -208,7 +208,7 @@ public class WarningAction {
             //  Message message =new Message("200",result,"warUserList","warUserList","closeCurrent","");
             message = new Message();
             message.setStatusCode("200");
-            message.setMessage("操作成功");
+            message.setMessage("success");
         }
         return message;
     }

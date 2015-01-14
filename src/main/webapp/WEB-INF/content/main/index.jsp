@@ -276,17 +276,17 @@
                         <li><a href="user/userlist.shtml" target="navTab" rel="userlist">用户列表</a></li>
                     </ul>
                 </div>
-                <div class="accordionHeader">
-                    <h2><span>Folder</span>测试模块</h2>
-                </div>
-                <div class="accordionContent">
-                    <ul class="tree">
-                        <li><a href="testModule/testDownLoad.shtml?pageNum=1&&pageSize=20" target="navTab" rel="testDownLoad">下载测试</a></li>
-                    </ul>
+                <%--<div class="accordionHeader">--%>
+                    <%--<h2><span>Folder</span>测试模块</h2>--%>
+                <%--</div>--%>
+                <%--<div class="accordionContent">--%>
                     <%--<ul class="tree">--%>
-                        <%--<li><a href="monitor/testUpload.shtml" target="navTab" rel="testFileUpload">上传测试</a></li>--%>
-                    <%--</ul>   ˜--%>
-                </div>
+                        <%--<li><a href="testModule/testDownLoad.shtml?pageNum=1&&pageSize=20" target="navTab" rel="testDownLoad">下载测试</a></li>--%>
+                    <%--</ul>--%>
+                    <%--<%--<ul class="tree">--%>--%>
+                        <%--<%--<li><a href="monitor/testUpload.shtml" target="navTab" rel="testFileUpload">上传测试</a></li>--%>--%>
+                    <%--<%--</ul>   ˜--%>--%>
+                <%--</div>--%>
             </div>
         </div>
     </div>
