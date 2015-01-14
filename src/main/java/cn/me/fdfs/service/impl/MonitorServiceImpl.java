@@ -278,8 +278,8 @@ public class MonitorServiceImpl extends BaseService implements MonitorService {
                     .createQuery("from Storage s where s.ipAddr=:ip order by s.created desc");
             List<Storage> results = query.setParameter("ip", s.getIpAddr())
                     .setMaxResults(10).list();
-            Line line = new Line(s.getIpAddr()+"mem使用率");
-            Line line1 = new Line(s.getIpAddr()+"cpu使用率");
+            Line line = new Line(s.getIpAddr()+"mem");
+            Line line1 = new Line(s.getIpAddr()+"cpu");
             for (int i = results.size() - 1; i >= 0; i--) {
                 Storage ss = results.get(i);
                 line.getData()
@@ -333,8 +333,8 @@ public class MonitorServiceImpl extends BaseService implements MonitorService {
         List<StorageHour> storages = query.setString("ip", ip)
                 .setParameter("starttime", start).setParameter("endtime", end)
                 .list();
-        Line uploadLine = new Line("上传文件数量");
-        Line downLoadLine = new Line("下载文件数量");
+        Line uploadLine = new Line("up num");
+        Line downLoadLine = new Line("down num");
         lines.add(uploadLine);
         lines.add(downLoadLine);
         for (int i = 0; i <= storages.size() - 1; i++) {
