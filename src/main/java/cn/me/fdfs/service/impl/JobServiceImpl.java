@@ -329,7 +329,7 @@ public class JobServiceImpl extends BaseService implements JobService {
                 List<WarningUser> warningUser = new ArrayList<WarningUser>();
                 warningUser = warningService.findWarUser();
                 for (WarningUser wu : warningUser) {
-                    buildMail.sendWarning("汽车之家FDFS监控", wu.getEmail(), "dfs预警报告", stringBuffer.toString());
+                    buildMail.sendWarning("汽车之家FDFS监控", wu.getEmail(), "fdfs预警报告", stringBuffer.toString());
                 }
             }
         }
@@ -363,7 +363,7 @@ public class JobServiceImpl extends BaseService implements JobService {
             List<WarningUser> warningUser = new ArrayList<WarningUser>();
             warningUser = warningService.findWarUser();
             for (WarningUser wu : warningUser) {
-                buildMail.sendWarning("汽车之家FDFS监控", wu.getEmail(), "dfs预警报告", stringBuffer.toString());
+                buildMail.sendWarning("汽车之家FDFS监控", wu.getEmail(), "fdfs预警报告", stringBuffer.toString());
             }
         }
     }
