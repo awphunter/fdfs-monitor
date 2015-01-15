@@ -30,6 +30,19 @@
         <appender-ref ref="JOB-LOG"/>
     </category>
 
+
+    <appender name="CLEAR-LOG" class="org.apache.log4j.FileAppender">
+        <param name="Append" value="true"/>
+        <param name="file" value="/data/logs/fdfsmo/clear.log"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%7r] %6p - %30.30c - %m \n"/>
+        </layout>
+    </appender>
+    <category name="clear-log" additivity="false">
+        <priority value="info"/>
+        <appender-ref ref="CLEAR-LOG"/>
+    </category>
+
     <root>
         <priority value="info"/>
         <appender-ref ref="FILE-DEBUG"/>

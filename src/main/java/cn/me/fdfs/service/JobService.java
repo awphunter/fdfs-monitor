@@ -16,4 +16,6 @@ public interface JobService {
     void updateGroupByMinute() throws IOException, MyException, JSchException;
     void updateGroupByHour() throws IOException, MyException, JSchException;
     void updateGroupByDay() throws IOException, MyException, JSchException;
+
+    void clearJobData() throws IOException, MyException, JSchException;
 }

@@ -97,4 +97,7 @@
     <task:annotation-driven executor="myExecutor" scheduler="myScheduler"/>
     <task:executor id="myExecutor" pool-size="5"/>
     <task:scheduler id="myScheduler" pool-size="10"/>
+
+    <import resource="app-datasource.xml" />
+    <import resource="app-dao.xml"/>
 </beans>

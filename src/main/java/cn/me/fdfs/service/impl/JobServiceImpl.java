@@ -1,5 +1,6 @@
 package cn.me.fdfs.service.impl;
 
+import cn.me.fdfs.dao.FdfsDao;
 import cn.me.fdfs.service.BaseService;
 import cn.me.fdfs.service.FileDataService;
 import cn.me.fdfs.service.JobService;
@@ -11,6 +12,7 @@ import cn.me.fdfs.vo.*;
 import com.jcraft.jsch.JSchException;
 import org.csource.common.MyException;
 import org.csource.fastdfs.*;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,6 +23,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -37,6 +40,8 @@ public class JobServiceImpl extends BaseService implements JobService {
 
     private static final Logger logger = LoggerFactory
             .getLogger(JobServiceImpl.class);
+    private static final Logger clearlogger = LoggerFactory
+            .getLogger("clear-log");
 
 
     @Autowired
@@ -45,6 +50,9 @@ public class JobServiceImpl extends BaseService implements JobService {
 
     @Autowired
     private FileDataService fileDataService;
+
+    @Resource
+    private FdfsDao fdfsDao;
 
     Map<String, Date> datemap = new HashMap<String, Date>();
 
@@ -88,6 +96,30 @@ public class JobServiceImpl extends BaseService implements JobService {
             session.save(group);
         }
         logger.info("group day data upated end");
+    }
+
+    @Override
+    @Scheduled(cron = "0 0 0/1 * * ?")
+    @Transactional(propagation = Propagation.REQUIRED)
+    public void clearJobData() throws IOException, MyException, JSchException {
+        clearlogger.info("clearJobData  begin");
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DAY_OF_MONTH, -10);
+        Date stime = calendar.getTime();
+//        logger.info("clearJobData  stime"+stime);
+//        String hql = "delete Group as g,Storage s  where g.id = s.  g.created < ?";
+//        Session session = getSession();
+//        Query query = session.createQuery(hql);
+//        query.setCalendar(0,calendar);
+//        int i = query.executeUpdate();
+//        session.beginTransaction().commit();
+        int g = fdfsDao.deleteGroup(stime);
+        int gd = fdfsDao.deleteGroupDay(stime);
+        int gh = fdfsDao.deleteGroupHour(stime);
+        int s = fdfsDao.deleteStorage(stime);
+        int sd = fdfsDao.deleteStorageDay(stime);
+        int sh = fdfsDao.deleteStorageHour(stime);
+        clearlogger.info("clearJobData  time="+stime+"   end g = "+g +" gd = "+gd +" gh = "+gh+" s="+s +" sd="+sd +" sh="+sh);
     }
 
     private List<Group> getGroupInfoByMinute() throws IOException, MyException, JSchException {
@@ -367,6 +399,12 @@ public class JobServiceImpl extends BaseService implements JobService {
             }
         }
     }
+
+
+
+
+
+
 }
 
 
