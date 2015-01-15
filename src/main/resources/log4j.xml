@@ -9,28 +9,30 @@
             <param name="LevelMin" value="INFO" />
         </filter>   
     </appender>
-    <appender name="ERROR" class="org.apache.log4j.DailyRollingFileAppender">
-        <param name="File" value="logs/shop-error.log"/>
+    <appender name="FILE-DEBUG" class="org.apache.log4j.FileAppender">
         <param name="Append" value="true"/>
+        <param name="file" value="/data/logs/fdfsmo/all.log"/>
         <layout class="org.apache.log4j.PatternLayout">
-        	<param name="ConversionPattern" value="%d{ABSOLUTE} %5p %c{1}:%L - %m%n" />
+            <param name="ConversionPattern" value="%d [%7r] %6p - %30.30c - %m \n"/>
         </layout>
-        <filter class="org.apache.log4j.varia.LevelRangeFilter">
-            <param name="LevelMin" value="ERROR" />
-        </filter>      
     </appender>
-    <appender name="INFO" class="org.apache.log4j.DailyRollingFileAppender">
-        <param name="File" value="logs/shop-info.log"/>
+
+
+    <appender name="JOB-LOG" class="org.apache.log4j.FileAppender">
         <param name="Append" value="true"/>
+        <param name="file" value="/data/logs/fdfsmo/job.log"/>
         <layout class="org.apache.log4j.PatternLayout">
-        	<param name="ConversionPattern" value="%d{ABSOLUTE} %5p %c{1}:%L - %m%n" />
+            <param name="ConversionPattern" value="%d [%7r] %6p - %30.30c - %m \n"/>
         </layout>
-        <filter class="org.apache.log4j.varia.LevelRangeFilter">
-            <param name="LevelMin" value="INFO" />
-        </filter>      
     </appender>
+    <category name="cn.me.fdfs.service.impl.JobServiceImpl" additivity="false">
+        <priority value="info"/>
+        <appender-ref ref="JOB-LOG"/>
+    </category>
+
     <root>
-        <appender-ref ref="STDOUT"/>
+        <priority value="info"/>
+        <appender-ref ref="FILE-DEBUG"/>
       <!--<appender-ref ref="ERROR"/>
         <appender-ref ref="INFO"/>      -->
     </root>

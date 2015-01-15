@@ -170,7 +170,7 @@ public class MonitorServiceImpl extends BaseService implements MonitorService {
             } else if (second >= 3600 * 1000 * 24 * 7) {
                 entity = "StorageDay";
             }
-            logger.info(second + "");
+//            logger.info(second + "");
         } catch (Exception e) {
             logger.info("date parse error use default!");
             Calendar calendar = Calendar.getInstance();
@@ -364,7 +364,7 @@ public class MonitorServiceImpl extends BaseService implements MonitorService {
     public void saveFile(Fdfs_file f) throws IOException, MyException {
         Session session = getSession();
         session.save(f);
-        logger.info("fdfs_file sava as" + f.getFile_id());
+//        logger.info("fdfs_file sava as" + f.getFile_id());
     }
 
     @Override
