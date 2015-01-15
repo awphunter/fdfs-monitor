@@ -32,7 +32,7 @@
 <div id="login">
     <div id="login_header">
         <h1 class="login_logo">
-            <!-- logo -->  <img src="${basePath }/images/login_logo.png" />
+            <%--<!-- logo -->  <img src="${basePath }/images/login_logo.png" />--%>
         </h1>
         <div class="login_headerContent">
             <div class="navList">
@@ -57,7 +57,9 @@
                 </div>
             </form>
         </div>
-        <div class="login_banner"><img src="${basePath }/images/login_banner.png" /></div>
+        <div class="login_banner" >
+            <%--<img src="${basePath }/images/login_banner.png" /></div>--%>
+            <h1 style="font-size: 25px">汽车之家fastdfs监控平台</h1>
         <div class="login_main">
             <ul class="helpList">
 
