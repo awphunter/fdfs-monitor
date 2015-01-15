@@ -95,8 +95,8 @@ public class JobServiceImpl extends BaseService implements JobService {
         List<Group> result = new ArrayList<Group>();
         // noinspection ConstantConditions
         ClientGlobal.init(Tools.getClassPath() + "fdfs_client.conf");
-        logger.info("network_timeout=" + ClientGlobal.g_network_timeout + "ms");
-        logger.info("charset=" + ClientGlobal.g_charset);
+//        logger.info("network_timeout=" + ClientGlobal.g_network_timeout + "ms");
+//        logger.info("charset=" + ClientGlobal.g_charset);
         TrackerClient tracker = new TrackerClient();
         TrackerServer trackerServer = tracker.getConnection();
         if (trackerServer == null) {
@@ -108,7 +108,7 @@ public class JobServiceImpl extends BaseService implements JobService {
                     + tracker.getErrorCode());
             return result;
         }
-        logger.info("group count: " + groupStats.length);
+//        logger.info("group count: " + groupStats.length);
         for (StructGroupStat groupStat : groupStats) {
             Group group = new Group();
             BeanUtils.copyProperties(groupStat, group);
@@ -120,7 +120,7 @@ public class JobServiceImpl extends BaseService implements JobService {
 
                 BeanUtils.copyProperties(storageStat, storage);
                 storage.setId(null);
-                System.out.println("getGroupInfoByMinute: storageId:"+storage.getId());
+//                System.out.println("getGroupInfoByMinute: storageId:"+storage.getId());
                 storage.setCurStatus(ProtoCommon
                         .getStorageStatusCaption(storageStat.getStatus()));
 
@@ -173,8 +173,8 @@ public class JobServiceImpl extends BaseService implements JobService {
         // noinspection ConstantConditions
 
         ClientGlobal.init(Tools.getClassPath() + "fdfs_client.conf");
-        logger.info("network_timeout=" + ClientGlobal.g_network_timeout + "ms");
-        logger.info("charset=" + ClientGlobal.g_charset);
+//        logger.info("network_timeout=" + ClientGlobal.g_network_timeout + "ms");
+//        logger.info("charset=" + ClientGlobal.g_charset);
         TrackerClient tracker = new TrackerClient();
         TrackerServer trackerServer = tracker.getConnection();
         if (trackerServer == null) {
@@ -186,7 +186,7 @@ public class JobServiceImpl extends BaseService implements JobService {
                     + tracker.getErrorCode());
             return result;
         }
-        logger.info("group count: " + groupStats.length);
+//        logger.info("group count: " + groupStats.length);
         for (StructGroupStat groupStat : groupStats) {
             GroupHour group = new GroupHour();
             BeanUtils.copyProperties(groupStat, group);
@@ -198,7 +198,7 @@ public class JobServiceImpl extends BaseService implements JobService {
                 storage.setCurStatus(ProtoCommon
                         .getStorageStatusCaption(storageStat.getStatus()));
                 storage.setId(null);
-                System.out.println("getGroupInfoByHour: storageId:"+storage.getId());
+//                System.out.println("getGroupInfoByHour: storageId:"+storage.getId());
                 storage.setGroup(group);
                 storage.setGroupName(group.getGroupName());
                 group.getStorageList().add(storage);
@@ -241,8 +241,8 @@ public class JobServiceImpl extends BaseService implements JobService {
 
 
         ClientGlobal.init(Tools.getClassPath() + "fdfs_client.conf");
-        logger.info("network_timeout=" + ClientGlobal.g_network_timeout + "ms");
-        logger.info("charset=" + ClientGlobal.g_charset);
+//        logger.info("network_timeout=" + ClientGlobal.g_network_timeout + "ms");
+//        logger.info("charset=" + ClientGlobal.g_charset);
         TrackerClient tracker = new TrackerClient();
         TrackerServer trackerServer = tracker.getConnection();
         if (trackerServer == null) {
@@ -254,7 +254,7 @@ public class JobServiceImpl extends BaseService implements JobService {
                     + tracker.getErrorCode());
             return result;
         }
-        logger.info("group count: " + groupStats.length);
+//        logger.info("group count: " + groupStats.length);
         for (StructGroupStat groupStat : groupStats) {
             GroupDay group = new GroupDay();
             BeanUtils.copyProperties(groupStat, group);
@@ -269,7 +269,7 @@ public class JobServiceImpl extends BaseService implements JobService {
                 storage.setGroup(group);
                 storage.setId(null);
                 storage.setGroupName(group.getGroupName());
-                System.out.println("getGroupInfoByDay: storageId:"+storage.getId());
+//                System.out.println("getGroupInfoByDay: storageId:"+storage.getId());
                 group.getStorageList().add(storage);
             }
             result.add(group);

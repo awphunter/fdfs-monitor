@@ -41,8 +41,8 @@ public class MonitorServiceImpl extends BaseService implements MonitorService {
         List<Group> result = new ArrayList<Group>();
         // noinspection ConstantConditions
         ClientGlobal.init(Tools.getClassPath() + "fdfs_client.conf");
-        logger.info("network_timeout=" + ClientGlobal.g_network_timeout + "ms");
-        logger.info("charset=" + ClientGlobal.g_charset);
+//        logger.info("network_timeout=" + ClientGlobal.g_network_timeout + "ms");
+//        logger.info("charset=" + ClientGlobal.g_charset);
         TrackerClient tracker = new TrackerClient();
         TrackerServer trackerServer = tracker.getConnection();
         if (trackerServer == null) {
@@ -54,7 +54,7 @@ public class MonitorServiceImpl extends BaseService implements MonitorService {
                     + tracker.getErrorCode());
             return result;
         }
-        logger.info("group count: " + groupStats.length);
+//        logger.info("group count: " + groupStats.length);
         Date date = new Date();
 
         for (StructGroupStat groupStat : groupStats) {

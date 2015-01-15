@@ -33,7 +33,7 @@ public class SysInterceptor extends HandlerInterceptorAdapter {
            }
        }
 		//buildMail.send("service@vivame.cn","VivaMe维我", "5515068@qq.com", "", "系统日志", request.getRemoteAddr() +" " +handler.getClass().getName(), null);
-        System.out.println(request.getRemoteAddr() +" " +handler.getClass().getName() );
+//        System.out.println(request.getRemoteAddr() +" " +handler.getClass().getName() );
         return true;
     }
 }

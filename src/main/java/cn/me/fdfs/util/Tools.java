@@ -97,7 +97,7 @@ public class Tools {
     static {
         SAXReader saxReader = new SAXReader();
         try {
-            System.out.println(Tools.getClassPath());
+//            System.out.println(Tools.getClassPath());
             Document document = saxReader.read(Tools.getClassPath() + "config.xml");
             Element root = document.getRootElement();
             machines = new ArrayList<Machine>();
