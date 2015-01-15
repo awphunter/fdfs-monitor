@@ -20,7 +20,7 @@ public class SysInterceptor extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String path = request.getContextPath();
-        String prePath = request.getScheme()+"://fdfs.autohome.conm.cn";
+        String prePath = request.getScheme()+"://fdfs.autohome.com.cn";
         String basePath = prePath ;//+":"+request.getServerPort()+path+"/";
         request.setAttribute("basePath",basePath);
         contentPath = path;
