@@ -130,7 +130,39 @@
             <version>1.1.7</version>
         </dependency>
     </dependencies>
+
+    <profiles>
+        <profile>
+            <id>development</id>
+            <properties>
+                <com.auto.mysql.driver>org.mariadb.jdbc.Driver</com.auto.mysql.driver>
+                <com.auto.mysql.url>jdbc:mariadb://127.0.0.1:3306/fastdfs</com.auto.mysql.url>
+                <com.auto.mysql.user>root</com.auto.mysql.user>
+                <com.auto.mysql.pass>123</com.auto.mysql.pass>
+            </properties>
+        </profile>
+        <profile>
+            <id>online</id>
+            <properties>
+                <com.auto.mysql.driver>org.mariadb.jdbc.Driver</com.auto.mysql.driver>
+                <com.auto.mysql.url>jdbc:mariadb://192.168.8.205:3306/fastdfs</com.auto.mysql.url>
+                <com.auto.mysql.user>root</com.auto.mysql.user>
+                <com.auto.mysql.pass>pass123556</com.auto.mysql.pass>
+            </properties>
+        </profile>
+    </profiles>
+
+
+    <!--<build>-->
+        <!--<finalName>fdfs-monitor</finalName>-->
+    <!--</build>-->
     <build>
         <finalName>fdfs-monitor</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
     </build>
 </project>

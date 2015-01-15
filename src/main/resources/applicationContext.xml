@@ -19,16 +19,16 @@
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
           destroy-method="close">
         <property name="driverClass">
-            <value>${datasource.driverClassName}</value>
+            <value>${com.auto.mysql.driver}</value>
         </property>
         <property name="jdbcUrl">
-            <value>${datasource.url}</value>
+            <value>${com.auto.mysql.url}</value>
         </property>
         <property name="user">
-            <value>${datasource.username}</value>
+            <value>${com.auto.mysql.user}</value>
         </property>
         <property name="password">
-            <value>${datasource.password}</value>
+            <value>${com.auto.mysql.pass}</value>
         </property>
         <property name="acquireIncrement">
             <value>${c3p0.acquireIncrement}</value>

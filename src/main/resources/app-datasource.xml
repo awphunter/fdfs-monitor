@@ -6,11 +6,11 @@
 
 
     <bean id="fsMariadbDataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
-        <property name="driverClassName" value="org.mariadb.jdbc.Driver"/>
+        <property name="driverClassName" value="${com.auto.mysql.driver}"/>
         <!-- 基本属性 url、user、password -->
-        <property name="url" value="jdbc:mariadb://127.0.0.1:3306/fastdfs"/>
-        <property name="username" value="root"/>
-        <property name="password" value="123"/>
+        <property name="url" value="${com.auto.mysql.url}"/>
+        <property name="username" value="${com.auto.mysql.user}"/>
+        <property name="password" value="${com.auto.mysql.pass}"/>
         <!-- 配置初始化大小、最小、最大 -->
         <property name="initialSize" value="5" />
         <property name="minIdle" value="5" />
